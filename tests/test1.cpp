@@ -21,10 +21,8 @@
 
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
+#include "square.hpp"
 
-double square(double d) {
-  return d*d;
-}
 
 TEST_CASE("test computation of d^2") {
   double d;
