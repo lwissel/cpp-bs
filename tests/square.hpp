@@ -17,8 +17,8 @@
  */
 
 // header guard
-#ifndef CPP_BS/TESTS/SQUARE_HPP_
-#define CPP_BS/TESTS/SQUARE_HPP_
+#ifndef CPP_BS_TESTS_SQUARE_HPP_
+#define CPP_BS_TESTS_SQUARE_HPP_
 // calculates the double of a double
-double square(double d);
-#endif
+double square(double:;
+#endif // CPP_BS_TESTS_SQUARE_HPP_
