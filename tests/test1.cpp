@@ -22,3 +22,4 @@
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 
+// g++ -Wall test1.cpp testcase1.cpp testcase2.cpp square.cpp
