@@ -21,7 +21,7 @@ unit_test:
 	$(CC) test1.cpp testcase1.cpp testcase2.cpp square.cpp -o unit_test.exe
 
 clean:
-	rm -rf *.o main.exe
+	rm -rf *.o $(EXECUTABLE)
 
 clean_all:
-	rm -rf *.o main.exe unit_test.exe
+	rm -rf *.o $(EXECUTABLE) unit_test.exe
