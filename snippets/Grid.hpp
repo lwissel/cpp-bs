@@ -25,18 +25,35 @@
  * =====================================================================================
  */
 #include <vector>
+
 #ifndef GRID_HPP_
 #define GRID_HPP_
 class Grid {
-  public:
-    Grid(int rows, int columns);
-    void printGrid();
-
   private:
-    int rows;
-    int columns;
-    enum gridValues { FOW, SHIP, HIT, SUNKEN, NWA };
-    std::vector< std::vector<int> > grid;
+      int size;
+      enum gridValues { FogOfWar, SHIP, HIT, SUNKEN, NWA };
+      std::vector< std::vector<int> > grid;
+   
+      void init();
+      void init(int size);
 
+  public:
+    static const int defaultGridSize = 10; // 10x10 2D grid
+    
+    // Constructors
+    Grid(); // default constructor creates classical game grid 10x10
+    Grid(int size); // generic vector sized arrays for different gamemodes
+    
+    // Getters
+    int getSize();
+
+    // Setters
+    void setValue(int row, int col, gridValues value);
+    
+    // Misc
+     void printGrid();
+     
+     
+  
 };
 #endif // GRID_HPP_

@@ -28,11 +28,28 @@
 #include "Grid.hpp"
 
 // Constructor
-Grid::Grid(int rows, int columns) {
-  this->rows = rows;
-  this->columns = columns;
-  this->grid.resize(columns, std::vector<int>(rows));
-  this->grid.assign(columns, std::vector<int>(rows,this->FOW));
+Grid::Grid() {
+  this->init();
+}
+
+Grid::Grid(int size) {
+  this->init(size);
+}
+
+// private methods
+void Grid::init() {
+    this->init(this->defaultGridSize);
+}
+
+void Grid::init(int size) {
+    this->size = size;
+    this->grid.resize(size, std::vector<int>(size));
+    this->grid.assign(size, std::vector<int>(size,this->FogOfWar));
+}
+
+// public methods
+int Grid::getSize() {
+    return this->size;
 }
 
 void Grid::printGrid() {

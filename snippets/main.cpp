@@ -20,6 +20,8 @@
 #include <iostream>
 
 int main() {
-  Grid testgrid(10,10);
+  Grid testgrid(3), test2, test3(5);
   testgrid.printGrid();
+  test2.printGrid();
+  test3.printGrid();
 }
