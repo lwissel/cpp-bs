@@ -4,7 +4,7 @@
 # specify the compiler
 CC = g++
 # add cflags
-CFLAGS = -c Wall
+CFLAGS = -c -Wall
 EXECUTABLE = main.exe
 all: main
 	
