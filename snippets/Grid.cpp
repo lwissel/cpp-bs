@@ -53,11 +53,12 @@ int Grid::getSize() {
 }
 
 std::string Grid::printGrid() {
-  std::string res;
+  std::string res = "";
   for ( std::vector<std::vector<int> >::size_type i = 0; i < grid.size(); i++ ) {
      for ( std::vector<int>::size_type j = 0; j < grid[i].size(); j++ ) {
-        res += grid[i][j] + ' ';
+        res += grid[i][j] + " ";
      }
-     res += '\n';
+     res += "\n";
   }
+  return res;
 }
