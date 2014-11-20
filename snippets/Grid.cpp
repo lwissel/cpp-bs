@@ -23,8 +23,8 @@
  *
  * =====================================================================================
  */
-#include <iostream>
 #include <vector>
+#include <string>
 #include "Grid.hpp"
 
 // Constructor
@@ -52,11 +52,12 @@ int Grid::getSize() {
     return this->size;
 }
 
-void Grid::printGrid() {
+std::string Grid::printGrid() {
+  std::string res;
   for ( std::vector<std::vector<int> >::size_type i = 0; i < grid.size(); i++ ) {
      for ( std::vector<int>::size_type j = 0; j < grid[i].size(); j++ ) {
-        std::cout << grid[i][j] << ' ';
+        res += grid[i][j] + ' ';
      }
-     std::cout << std::endl;
+     res += '\n';
   }
 }

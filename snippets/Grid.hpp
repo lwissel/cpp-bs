@@ -25,6 +25,7 @@
  * =====================================================================================
  */
 #include <vector>
+#include <string>
 
 #ifndef GRID_HPP_
 #define GRID_HPP_
@@ -51,7 +52,7 @@ class Grid {
     void setValue(int row, int col, gridValues value);
     
     // Misc
-     void printGrid();
+    std::string printGrid();
      
      
   
