@@ -3,35 +3,31 @@
  *
  *       Filename:  Grid.cpp
  *
- *    Description:  Grid class representing an abstract 2D int
- *                  array[row][column] whose entries may take one of the
- *                  following values
+ *          @brief  Implementation for the Grid class
+ *        @version  1.0
+ *           @date  18/11/2014 14:14:50
+ *        Compiler  gcc
  *
- *                  0 = FOW = FogOfWar, initial value
- *                  1 = SHIP (of Player x)
- *                  2 = HIT = damaged ship
- *                  3 = SUNKEN
- *                  4 = NWA = not well aimed = mishit
- *
- *        Version:  1.0
- *        Created:  18/11/2014 14:14:46
- *       Revision:  none
- *       Compiler:  gcc
- *
- *         Author:  Lennart Wissel (lw), lennart.wissel@gmx.net
- *   Organization:  UoB
+ *        @author  Lennart Wissel (lw), lennart.wissel@gmx.net
  *
  * =====================================================================================
  */
+
 #include <vector>
 #include <string>
 #include "Grid.hpp"
-
-// Constructor
+/** 
+ * @brief default constructor
+ *
+ * This constructor creates a new Grid of size 10x10 without any ship
+ */
 Grid::Grid() {
   this->init();
 }
 
+/**
+ * @brief constructor to create arbitrary square grids
+ */
 Grid::Grid(int size) {
   this->init(size);
 }
