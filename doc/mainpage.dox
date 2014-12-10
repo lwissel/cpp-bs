@@ -1,0 +1,68 @@
+/**
+\mainpage Documentation of the Battleship project
+\author Lennart Wissel
+\date 12.12.2014
+
+\section Introduction
+This document contains the documentation for the C++ Project "Battleship"
+written in the winter term of the academic year 2014/15 in the module
+"Introduction to C++" of the department of physics and astronomy of the
+University of Birmingham in the United Kingdom.
+
+My name is Lennart Wissel and I am taking this module as part of the Erasmus
+exchange scheme without being able to use it at my home university. I therefore
+try to use this module as rewarding as possible for myself, with the goal to
+look into a more 'applied' area of physics which was unknown to me beforehand.
+More reasoning about my project decisions are further below.
+
+ \image html board.png
+ \image latex board.png
+
+The game is a usual programming project and originates from the round
+based classical board game. The rules are as follows:
+
+\section Features 
+The features of the latest version include
+- 
+-
+
+
+\section design Design and Programming Approach
+The personal goal of this module was to get into programming as I have never
+used C++ before. I wanted to make sure that I use of as many 'real-life'
+techniques as possible. During the weeks I focussed more on the complexity
+of the code production cycle than on the actual coding itself, which lead to
+only very little amount of code in the end. However, I am quite satisfied
+with what I was able to get to know and successfully used. The tools I
+decided to work with included (after a corresponding research and respective
+period of vocational adjustment for each)
+
+- setting up and learning the linux editor VIM with the pathogen plugin
+  system and the following extensions
+   - nerdtree, a file browser plugin
+   - cvim, a plugin that transformes (after configuration) VIM into an C++
+     IDE.
+   - the molokai colour and syntax highlighting scheme
+   - syntastic, a syntax checking plugin
+
+- doxygen, a configurable documentation generator including latex and html
+- make, for easy compilation using gcc
+- git, a distributed source code management system developed by Linus Torvalds
+- CATCH, an open source unit testing framework which is entirely header based
+- (planned) QT framework for platform independent GUI application
+
+My 'official' git repository can be handed in if needed.
+
+\section Implementation
+\subsection dev Development Process
+- Version Control System
+- OOP approach
+- CPP/HPP files
+   - Header guards
+- makefile
+\section Tests
+- CATCH framework
+\section Future Plans
+\section References
+\section END
+*/
