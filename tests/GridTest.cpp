@@ -1,5 +1,5 @@
-#include "../tests/catch.hpp"
-#include "Grid.hpp"
+#include "catch.hpp"
+#include "../src/Grid.hpp"
 
 #include <iostream>
 
