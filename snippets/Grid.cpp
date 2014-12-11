@@ -14,9 +14,9 @@
  */
 
 #include <sstream>
-
 #include <vector>
 #include <string>
+
 #include "Grid.hpp"
 
 /*-----------------------------------------------------------------------------
@@ -50,10 +50,13 @@ void Grid::init() {
 
 /// @brief initializes a grid with arbitrary size
 /// @param size represents the size of the grid
+///   note that the maximum is set to 99 at the moment
 void Grid::init(int size) {
+    if (size > 99)
+       size = 99;
     this->size = size;
     this->grid.resize(size, std::vector<int>(size));
-    this->grid.assign(size, std::vector<int>(size,this->FogOfWar));
+    this->grid.assign(size, std::vector<int>(size,this->FOG));
 }
 
 
@@ -68,6 +71,32 @@ int Grid::getSize() {
     return this->size;
 }
 
+
+/// @brief method to get the value of a specific grid field
+/// @param row describes the row
+/// @param col describes the column
+/// @return the gridValue of the named field
+int Grid::getValue(int row, int col) {
+   if (row >= size || col >= size)
+      return FOG;
+
+   return this->grid[row][col];
+}
+
+
+/// @brief method to set the value of a specific grid field
+/// @param row describes the row
+/// @param col describes the column
+/// @param value is an integer from 0-4 representing the field state enums
+void Grid::setValue(int row, int col, gridValues value) {
+   if (row >= size || col >= size)
+      return;
+
+   this->grid[row][col] = value;
+}
+
+
+
 /// @brief prints the grid in raw form
 /// @return string representation of the grid with number representing the
 /// field state. Will create Column A...J.. and Row 1 ... 10.. depending on the
@@ -76,13 +105,16 @@ int Grid::getSize() {
 /// B 0 0 0
 /// C 0 0 0
 ///   1 2 3
+/// @todo in control/player class: replace grid values by proper symbols
+/// depending on what each player is supposed to see
+/// for numbers over 10 the coordinates won't be aligned at the moment
 std::string Grid::printGrid() {
   std::ostringstream os; ///< String concatenation in c++ workaround
 
   os << "\n";
   for ( std::vector<std::vector<int> >::size_type i = 0; i < grid.size(); i++ ) {
      std::string index = std::string(1, static_cast<char>(i+65));
-     os << "\t" << index << " ";
+     os << index << " ";
      for ( std::vector<int>::size_type j = 0; j < grid[i].size(); j++ ) {
         os << grid[i][j] << " ";
      }
