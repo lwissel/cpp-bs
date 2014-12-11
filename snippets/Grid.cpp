@@ -13,6 +13,8 @@
  ***************************************************************************************
  */
 
+#include <sstream>
+
 #include <vector>
 #include <string>
 #include "Grid.hpp"
@@ -59,6 +61,9 @@ void Grid::init(int size) {
 /*-----------------------------------------------------------------------------
  *  public methods
  *-----------------------------------------------------------------------------*/
+
+/// @brief getter for the size of the grid
+/// @return size of the square matrix
 int Grid::getSize() {
     return this->size;
 }
@@ -66,21 +71,27 @@ int Grid::getSize() {
 /// @brief prints the grid in raw form
 /// @return string representation of the grid with number representing the
 /// field state. Will create Column A...J.. and Row 1 ... 10.. depending on the
-/// size of the grid
-/// @bug doesnt work
+/// size of the grid, eg
+/// A 0 0 0
+/// B 0 0 0
+/// C 0 0 0
+///   1 2 3
 std::string Grid::printGrid() {
-  std::string res;
+  std::ostringstream os; ///< String concatenation in c++ workaround
+
+  os << "\n";
   for ( std::vector<std::vector<int> >::size_type i = 0; i < grid.size(); i++ ) {
      std::string index = std::string(1, static_cast<char>(i+65));
-     res.append(index);
+     os << "\t" << index << " ";
      for ( std::vector<int>::size_type j = 0; j < grid[i].size(); j++ ) {
-        res.append(std::string(1,grid[i][j]));
-        res.append(" ");
+        os << grid[i][j] << " ";
      }
-     res.append("\n");
+     os << "\n";
   }
-  res.append("  ");
+  os << "  ";
   for (int i = 1; i <= size; i++)
-     res.append(i + " ");
-   return res;
+     os << i << " ";
+
+  os << "\n";
+   return os.str();
 }
