@@ -65,14 +65,22 @@ int Grid::getSize() {
 
 /// @brief prints the grid in raw form
 /// @return string representation of the grid with number representing the
-/// field state
+/// field state. Will create Column A...J.. and Row 1 ... 10.. depending on the
+/// size of the grid
+/// @bug doesnt work
 std::string Grid::printGrid() {
-  std::string res = "";
+  std::string res;
   for ( std::vector<std::vector<int> >::size_type i = 0; i < grid.size(); i++ ) {
+     std::string index = std::string(1, static_cast<char>(i+65));
+     res.append(index);
      for ( std::vector<int>::size_type j = 0; j < grid[i].size(); j++ ) {
-        res += grid[i][j] + " ";
+        res.append(std::string(1,grid[i][j]));
+        res.append(" ");
      }
-     res += "\n";
+     res.append("\n");
   }
-  return res;
+  res.append("  ");
+  for (int i = 1; i <= size; i++)
+     res.append(i + " ");
+   return res;
 }
