@@ -16,10 +16,40 @@ look into a more 'applied' area of physics which was unknown to me beforehand.
 More reasoning about my project decisions are further below.
 
  \image html board.png
- \image latex board.png
+ 
+ \latexonly
+ \centerline{\includegraphics[scale=1]{board.png}}
+ \endlatexonly
 
 The game is a usual programming project and originates from the round
-based classical board game. The rules are as follows:
+based classical board game. It exists in many different versions both
+physically and programmed. A set of standard rules could be defined as follows:
+
+One needs a minimum of two players and a playing board consisting of a defined
+coordinate system of ten times ten fields in whose each player can place a
+previously declared amount of ships. Additional rules are
+- the ships are not allowed to have edges or bulges
+- the ships may only be placed in straight lines, but not on any diagonal
+- the total number of ships and their size is usually
+   - 1 aircraft carrier of size 5
+   - 2 battleships of size 4
+   - 3 destroyers of size 3
+   - 4 submarines of size 2
+   .
+   yielding 10 ships and 30/100 fields covered.
+
+In general it is possible to vary the amount of ships, the size of the
+battlefield or to introduce special rules like repeated shooting, extra
+ammunition etc.
+
+The run of play is round based. One player starts to name a coordinate which he
+aims at. The opponent checks whether that shot hit one of his ships and answers
+with \a mishit, \a hit or \a destroyed, whereas the latter means that all
+fields one ship covered have been hit. Both players mark their previous
+shootings to keep track of hits and mishits. This procedure is alternated
+between the two players until all ships are destroyed. The player who finishes
+first becomes victorious.
+
 
 \section Features 
 The features of the latest version include
@@ -29,40 +59,186 @@ The features of the latest version include
 
 \section design Design and Programming Approach
 The personal goal of this module was to get into programming as I have never
-used C++ before. I wanted to make sure that I use of as many 'real-life'
+used C++ before. I wanted to make sure that I use as many 'real-life'
 techniques as possible. During the weeks I focussed more on the complexity
 of the code production cycle than on the actual coding itself, which lead to
-only very little amount of code in the end. However, I am quite satisfied
-with what I was able to get to know and successfully used. The tools I
-decided to work with included (after a corresponding research and respective
-period of vocational adjustment for each)
+only very little amount of code in the end. However, I am quite satisfied with
+what I was able to get to know and successfully used. Inspired by a friend of
+mine, a professional network developer, the tools I decided to work with
+included (after a corresponding research and respective period of vocational
+adjustment for each)
 
-- setting up and learning the linux editor VIM with the pathogen plugin
+- setting up and learning the linux editor \b VIM with the pathogen plugin
   system and the following extensions
    - nerdtree, a file browser plugin
-   - cvim, a plugin that transformes (after configuration) VIM into an C++
+   - cvim, a plugin that transformes (after configuration) VIM into a C++
      IDE.
    - the molokai colour and syntax highlighting scheme
    - syntastic, a syntax checking plugin
+   .
+   The idea behind taking the effort to learn VIM is to have a very slim and
+   configurable text editor that is very powerful underneath and allows quick
+   text editing. Compared to other fully integrated development envirenments
+   VIM forces me to work harder directly on the code and to understand more
+   details that I might not have to consider when using an IDE.
 
-- doxygen, a configurable documentation generator including latex and html
-- make, for easy compilation using gcc
-- git, a distributed source code management system developed by Linus Torvalds
-- CATCH, an open source unit testing framework which is entirely header based
+- \b doxygen, a configurable documentation generator including latex and html
+- \b make, for easy compilation using gcc
+- \b git, a distributed source code management system developed by Linus Torvalds
+- \b CATCH, an open source unit testing framework which is entirely header based
 - (planned) QT framework for platform independent GUI application
 
 My 'official' git repository can be handed in if needed.
 
+
+Following an object orientated test driven programming approach my idea was to
+split the complexity of the task into smaller, logically grouped and reusable
+code fragments, controlled by instances of an abstract control class which
+should handle the 'real' objects like the battlegrid or the ships, supported by
+classes for command line interface (cli) user interaction.
+
+The design idea goes way behind the scope of the raw implementation provided
+here, but I will include my ideas for completeness:
+
+- Logic and internal structures: 
+   -# the \b board itself, called grid, a 2D array abstraction with specific
+      element values representing ships, mishits etc.
+   -# \b ships, these are objects that have a length, orientation and
+      coordinates. Should be flexibly adjustable for different gamemodes.
+   -# the \b players, minimum of two, one possibly being artificial, registered by
+   -# a \b control class implementing gamemodes and handling the round based game
+      consisting of: initializing a game, setting the ships, shooting, managing
+      the output
+   -# its own \b AI, implementing a variety of tactics (eg. random aiming,
+      aiming based on patterns, probability aiming, diagonal methods etc)
+
+- Graphics and user interaction:
+   -# a \b CLI to play the game from the command
+     line
+   -# graphical \b GUI based on the QT frameword for portabilty
+   -# handling of user input regarding coordinates and exceptions
+
+- Miscellaneous
+   -# focus on good programming style, quality over quantity
+   -# implementing a proper logging framework without using singletons
+   -# test driven development by implementing an easy to use framework
+   
+
+
 \section Implementation
+The code should be self-explanatory and well commented. I refer here to the
+class documentation in the later pages of this document or the HTML version to
+\section Reflection 
+This module and learning programming in particular without simple numerical
+excercises was new to me. At my home university we just used advanced
+application suits like Mathematica where the 'programming' is very intuitive. I
+get a simple overview.
+
 \subsection dev Development Process
-- Version Control System
-- OOP approach
-- CPP/HPP files
-   - Header guards
-- makefile
+- Version Control System\n
+   git is the de-facto standard in modern distributed code management and
+   enabled me to easily keep track of changes, extra features, tests and
+   bugfixing by providing excellent infrastructure for syncing the code base,
+   branching, pulling and merging files. It should be even more rewarding in
+   group work. Unfortunately it is not a-priori accessable from the learning
+   center workstations and I had to configure it manually each session.
+   For more information see the <a href="http://git-scm.com" target="_blank">git website</a>.
+
+- OOP approach\n
+   Object orientated programming enables the programmer to add additional
+   structure to the code, representing the solution in usable fragments and
+   objects that help to find orientation and simplification compared to dealing
+   with only modules or functionals. There are many different approaches in
+   todays programming world, but object orientation can be seen as a
+   programming paradigm, with both advantages and disadvantages. For a deeper
+   discussion on this matter I refer to 'non scientific sources' on 
+   <a href="http://stackoverflow.com/questions/24270/whats-the-point-of-oop" target="_blank">stackoverflow</a>.
+
+- CPP/HPP files\n
+   I tried to split the code up in classes, divided in a declaration (header
+   file *.hpp) and an implementation (.cpp file) declare functions for the
+   compiler before being able to use them. It should provide clarity on how the
+   class works without having to look at the actual implementation which is the
+   historic way to declare functions for the compiler before being able to use
+   them. The header should provide enough information on how the class works
+   without having to look at the actual implementation.
+
+- Header guards\n
+   Header guards consist of preprocesser instructions of type
+   \verbatim 
+   #ifndef  ...
+   #define  ...
+   #include ...
+     .. [code] .. 
+   #endif \endverbatim
+   They are important to avoid multiple
+   includes from other headers that indirectly include the same header. This
+   could result in multiple definition errors and a workaround is to define a
+   'namespace' for the header which is only executed when the declaration is
+   not already known to the preprocessor.
+
+- Makefile\n
+   The project contains a simple makefile to build and clean the executable
+   from the sources. It can be used on Windows with the mingw32-make.exe
+   provided by the mingw compiler suite. A makefile contains a set of rules for
+   specific build targets and can be used via make [option] [target1 target2
+   ...]. It describes the dependencies for each target and which files have to
+   be rebuild upon compilation (for example some object files may already
+   exist).
+
+- Documentation\n
+   <a href="http://www.doxygen.org" target="_blank">Doxygen</a> provides a very
+   solid environment to generate extensive documention for a variety of
+   programming languages. It is configurable via its own configuration file
+   ("doxygen.conf" in my project) and uses special documentary keywords such as
+   \@author, \@brief, \@param to differentiate between normal comments and
+   special commentary for the doxygen output. I adjusted the configuration and
+   latex design to fit my needs and tried to use the correct comment style
+   throughout the code.
+
 \section Tests
-- CATCH framework
+Unit testing is very important in a bigger project. Test driven development
+means to define tests for a method or function that exactly describes the
+desired in and ouput before the concrete implementation. Afterwards it should
+be very easy to verify whether the written code indeed does what it is supposed
+to do. I tried to apply this paradigm as it forces me to think very clearly
+about the requirements before writing nonsense. It takes more time though, even
+if used test framework <a href="https://github.com/philsquared/Catch" target="_blank">CATCH</a>
+creates very little overhead by following its header-only approach.
+
+The tests can be compiled with the makefile target unit_test and running
+unit_test.exe afterwards. Command line options are available. See --help.
+
 \section Future Plans
+For all the additional content that caught my interest and made me really dive
+deep into this subject I had very little time left for the actual
+implementation. The code is therefore far from being complete or usable. I will
+look into finishing and piecewise expanding this project in my free time.
+
 \section References
-\section END
+- <a href="http://www.vim.org/" target="_blank">VIM</a>
+- <a href="http://git-scm.com/" target="_blank">git</a>
+- <a href="http://www.doxygen.org/" target="_blank">Doxygen</a>
+- <a href="http://www.vim.org/scripts/script.php?script_id=213" target="_blank">cvim</a>
+- <a href="https://github.com/scrooloose/syntastic" target="_blank">syntatsic</a>
+- <a href="https://github.com/scrooloose/nerdtree" target="_blank">Nerdtree</a>
+- <a href="https://github.com/philsquared/Catch" target="_blank">Catch</a>
+- <a href="https://www.gnu.org/software/make/manual/html_node/Makefiles.html#Makefiles" target="_blank">Makefile</a>
+- <a href="http://qt-project.org/" target="_blank">QT</a>
+- <a href="http://www.latex-project.org/" target="_blank">Latex</a>
+
+- <a href="http://en.wikipedia.org/wiki/Battleship_%28game%29" target="_blank">Battleship on Wikipedia</a>
+
+\section Reflection 
+This module and learning programming in particular without simple numerical
+excercises was new to me. At my home university we just used advanced
+application suits like Mathematica where the 'programming' is very intuitive. I
+really liked the pragmatic and applied approach of this course. Without
+focussing on physics too much (which would just limit the programming content)
+I learned how to use a very popular programming language which not only allows
+me to apply it on future topics in physics but also on other non-academic areas
+of my interest. I hope my 'way' of approaching this module in a very wide
+perspective is no too far off from what the tutors intended.
+
+\a Lennart \a Wissel
 */
