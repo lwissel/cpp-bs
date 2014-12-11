@@ -194,7 +194,8 @@ get a simple overview.
    \@author, \@brief, \@param to differentiate between normal comments and
    special commentary for the doxygen output. I adjusted the configuration and
    latex design to fit my needs and tried to use the correct comment style
-   throughout the code.
+   throughout the code. To generate the documentation one has to run \a doxygen
+   \a doxygen.conf from the configuration file directory.
 
 \section Tests
 Unit testing is very important in a bigger project. Test driven development
