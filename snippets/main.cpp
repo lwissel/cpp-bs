@@ -20,8 +20,4 @@
 #include <iostream>
 
 int main() {
-  Grid testgrid(3), test2, test3(5);
-  std::cout << testgrid.printGrid();
-  std::cout << test2.printGrid();
-  std::cout << test3.printGrid();
 }
