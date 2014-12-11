@@ -3,6 +3,7 @@
 \author Lennart Wissel
 \date 12.12.2014
 
+
 \section Introduction
 This document contains the documentation for the C++ Project "Battleship"
 written in the winter term of the academic year 2014/15 in the module
@@ -55,6 +56,13 @@ first becomes victorious.
 The features of the latest version include
 - 
 -
+
+
+\section run Compilation and Execution
+By having a look at the Makefile it becomes clear that especially
+\verbatim make main \endverbatim and \verbatim make unit_test \endverbatim
+create the interesting builds. unit_test.exe -s will print out the written
+tests.
 
 
 \section design Design and Programming Approach
@@ -134,6 +142,7 @@ excercises was new to me. At my home university we just used advanced
 application suits like Mathematica where the 'programming' is very intuitive. I
 get a simple overview.
 
+
 \subsection dev Development Process
 - Version Control System\n
    git is the de-facto standard in modern distributed code management and
@@ -197,6 +206,7 @@ get a simple overview.
    throughout the code. To generate the documentation one has to run \a doxygen
    \a doxygen.conf from the configuration file directory.
 
+
 \section Tests
 Unit testing is very important in a bigger project. Test driven development
 means to define tests for a method or function that exactly describes the
@@ -210,11 +220,13 @@ creates very little overhead by following its header-only approach.
 The tests can be compiled with the makefile target unit_test and running
 unit_test.exe afterwards. Command line options are available. See --help.
 
+
 \section Future Plans
 For all the additional content that caught my interest and made me really dive
 deep into this subject I had very little time left for the actual
 implementation. The code is therefore far from being complete or usable. I will
 look into finishing and piecewise expanding this project in my free time.
+
 
 \section References
 - <a href="http://www.vim.org/" target="_blank">VIM</a>
@@ -229,6 +241,7 @@ look into finishing and piecewise expanding this project in my free time.
 - <a href="http://www.latex-project.org/" target="_blank">Latex</a>
 
 - <a href="http://en.wikipedia.org/wiki/Battleship_%28game%29" target="_blank">Battleship on Wikipedia</a>
+
 
 \section Reflection 
 This module and learning programming in particular without simple numerical
