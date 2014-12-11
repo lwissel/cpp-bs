@@ -35,9 +35,6 @@ class Grid {
       /// size = rows = columns of square grid
       int size;
 
-      /// enum to represent grid values
-      enum gridValues { FogOfWar, SHIP, HIT, SUNKEN, MIS };
-
       /// the grid itself should be dynamically allocatable in general
       std::vector< std::vector<int> > grid;
    
@@ -49,8 +46,11 @@ class Grid {
   
 
   public:
+      /// enum to represent grid values
+      enum gridValues { FOG, SHIP, HIT, SUNKEN, MIS };
+
       /// 10x10 2D grid to be the standard
-      static const int defaultGridSize = 10; // 10x10 2D grid
+      static const int defaultGridSize = 10;
     
       /// default constructor
       Grid();
@@ -60,6 +60,9 @@ class Grid {
       
       /// gets the size of the game grid
       int getSize();
+
+      /// gets the value of a specific field in the grid
+      int getValue(int row, int col);
 
       /// sets the value of a specific field in the grid
       void setValue(int row, int col, gridValues value);
