@@ -37,6 +37,12 @@ Ship::Ship(int size, std::string type, int xpos, int ypos, char orientation) {
 }
 
 
+/// @brief equality operator overloading for objects of this class
+/// @param ship to compare to this
+bool Ship::operator== (const Ship &ship) const {
+   return (*this == ship);
+}
+
 /*-----------------------------------------------------------------------------
  *  GETTERS 
  *-----------------------------------------------------------------------------*/
@@ -100,32 +106,36 @@ void Ship::setSize(int size) {
 
 
 /// @brief setter for type
-/// @param new type of the ship
+/// @param type is new type of the ship
 void Ship::setType(std::string type) {
    this->type = type;
 }
 
 
 /// @brief setter for xpos
-/// @param new starting position in x direction
+/// @param xpos new starting position in x direction
 void Ship::setXpos(int xpos) {
    this->xpos = xpos;
 }
 
 
 /// @brief setter for ypos
-/// @param new starting position in y direction
+/// @param ypos new starting position in y direction
 void Ship::setYpos(int ypos) {
    this->ypos = ypos;
 }
 
 
 /// @brief setter for orientation
-/// @param new orientation of the ship
+/// @param orientation of the ship
 void Ship::setOrientation(char orientation) {
    this->orientation = orientation;
 }
 
+/// @brief overloaded equality operator
+/// @param lhs ship passed by reference
+/// @param rhs ship passed by reference
+/// @return true if ships have completely equal values
 bool operator== (Ship &lhs, Ship &rhs) {
    return ( lhs.getSize() == rhs.getSize() &&
             lhs.getType() == rhs.getType() &&
@@ -134,6 +144,10 @@ bool operator== (Ship &lhs, Ship &rhs) {
             lhs.getYpos() == rhs.getYpos() );
 }
 
+/// @brief overloaded inequality operator
+/// @param lhs ship passed by reference
+/// @param rhs ship passed by reference
+/// @return false if ships have completely equal values
 bool operator!= (Ship &lhs, Ship &rhs) {
    return !(lhs == rhs);
 }
