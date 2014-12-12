@@ -81,5 +81,9 @@ class Ship {
 
       /// setter for orientation
       void setOrientation(char orientation);
+
+      /// overloading of comparison operators used for removing ship objects
+      friend bool operator== (Ship &lhs, Ship &rhs);
+      friend bool operator!= (Ship &lhs, Ship &rhs);
 };
 #endif // SHIP_HPP_

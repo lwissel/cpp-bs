@@ -7,10 +7,11 @@ TEST_CASE("Test of Ship class") {
    Ship s1;
    Ship s2(4,"sub",1,1,'s');
    Ship s3(19,"battleship",2,8,'n');
+   Ship s4, s5;
 
-   std::cout << s1.printShip();
-   std::cout << s2.printShip();
-   std::cout << s3.printShip();
+   std::cout << s1.printShip() << std::endl;
+   std::cout << s2.printShip() << std::endl;
+   std::cout << s3.printShip() << std::endl;
   
   SECTION("Constructor tests") {
      REQUIRE(s1.getSize() == 0);
@@ -37,9 +38,16 @@ TEST_CASE("Test of Ship class") {
         s1.setOrientation('m'); // is allowed should be handled by control class
         REQUIRE(s1.getOrientation() == 'm');
      }
-   std::cout << s1.printShip();
-   std::cout << s2.printShip();
-   std::cout << s3.printShip();
+
+   SECTION("TEST FOR ==") {
+      REQUIRE(s1 != s2);
+      REQUIRE(s1 != s3);
+      REQUIRE(s2 != s3);
+      REQUIRE(s4 == s5);
+   }
+   std::cout << s1.printShip() << std::endl;
+   std::cout << s2.printShip() << std::endl;
+   std::cout << s3.printShip() << std::endl;
   }
 
 

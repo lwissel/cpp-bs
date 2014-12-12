@@ -125,3 +125,15 @@ void Ship::setYpos(int ypos) {
 void Ship::setOrientation(char orientation) {
    this->orientation = orientation;
 }
+
+bool operator== (Ship &lhs, Ship &rhs) {
+   return ( lhs.getSize() == rhs.getSize() &&
+            lhs.getType() == rhs.getType() &&
+            lhs.getOrientation() == rhs.getOrientation() &&
+            lhs.getXpos() == rhs.getXpos() &&
+            lhs.getYpos() == rhs.getYpos() );
+}
+
+bool operator!= (Ship &lhs, Ship &rhs) {
+   return !(lhs == rhs);
+}
