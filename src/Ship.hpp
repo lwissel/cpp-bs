@@ -9,6 +9,9 @@
  *                 position on the battlefield
  *                 default constructor values are size = 0, orientation = s,
  *                 position = origin, type = ship
+ *                 @todo exception handling if the ship is too big for the
+ *                 grid, the orientation changes and registration on the
+ *                 battlegrid has to be taken care of by the Control class
  *
  *       @version  1.0
  *          @date  11/12/14 16:54:40

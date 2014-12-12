@@ -13,6 +13,8 @@
  ***************************************************************************************
  */
 
+#include <string>
+
 #include "Ship.hpp"
 
 /*-----------------------------------------------------------------------------
@@ -20,74 +22,93 @@
  *-----------------------------------------------------------------------------*/
 
 /// @brief default constructor
-/// 
-Ship::Ship() {
+/// @param size size of ship
+/// @param type is name or type of the ship
+/// @param xpos is the x-position of the first ship field starting from top left corner
+/// @param ypos is the y-position of the first ship field starting from top left corner
+/// @param orientation is the orientation n = north, s = south, w = west, e = east
+Ship::Ship(int size, std::string type, int xpos, int ypos, char orientation) {
+   this->size = size;
+   this->type = type;
+   this->xpos = xpos;
+   this->ypos = ypos;
+   this->orientation = orientation;
 }
 
 
 /*-----------------------------------------------------------------------------
- *  public methods
+ *  GETTERS 
  *-----------------------------------------------------------------------------*/
 
-/// @brief getter for the size of the grid
-/// @return size of the square matrix
-int Grid::getSize() {
+/// @brief getter for the size of the ship
+/// @return size of the ship
+int Ship::getSize() {
     return this->size;
 }
 
 
-/// @brief method to get the value of a specific grid field
-/// @param row describes the row
-/// @param col describes the column
-/// @return the gridValue of the named field
-int Grid::getValue(int row, int col) {
-   if (row >= size || col >= size)
-      return FOG;
-
-   return this->grid[row][col];
+/// @brief method to get the type of the ship
+/// @return the name or type of the ship
+std::string Ship::getType() {
+   return this->type;
 }
 
 
-/// @brief method to set the value of a specific grid field
-/// @param row describes the row
-/// @param col describes the column
-/// @param value is an integer from 0-4 representing the field state enums
-void Grid::setValue(int row, int col, gridValues value) {
-   if (row >= size || col >= size)
-      return;
-
-   this->grid[row][col] = value;
+/// @brief getter for xposition
+/// @return the x position of the ship
+int Ship::getXpos() {
+   return this->xpos;
 }
 
 
+/// @brief getter for yposition
+/// @return the y position of the ship
+int Ship::getYpos() {
+   return this->ypos;
+}
 
-/// @brief prints the grid in raw form
-/// @return string representation of the grid with number representing the
-/// field state. Will create Column A...J.. and Row 1 ... 10.. depending on the
-/// size of the grid, eg
-/// A 0 0 0
-/// B 0 0 0
-/// C 0 0 0
-///   1 2 3
-/// @todo in control/player class: replace grid values by proper symbols
-/// depending on what each player is supposed to see
-/// for numbers over 10 the coordinates won't be aligned at the moment
-std::string Grid::printGrid() {
-  std::ostringstream os; ///< String concatenation in c++ workaround
 
-  os << "\n";
-  for ( std::vector<std::vector<int> >::size_type i = 0; i < grid.size(); i++ ) {
-     std::string index = std::string(1, static_cast<char>(i+65));
-     os << index << " ";
-     for ( std::vector<int>::size_type j = 0; j < grid[i].size(); j++ ) {
-        os << grid[i][j] << " ";
-     }
-     os << "\n";
-  }
-  os << "  ";
-  for (int i = 1; i <= size; i++)
-     os << i << " ";
+/// @brief getter for the orientation
+/// @return character representing the orientation
+char Ship::getOrientation() {
+   return this->orientation;
+}
 
-  os << "\n";
-   return os.str();
+
+/*-----------------------------------------------------------------------------
+ *  SETTERS
+ *-----------------------------------------------------------------------------*/
+
+/// @brief setter for the ship size
+/// @param size to set the size of the ship
+void Ship::setSize(int size) {
+   this->size = size;
+}
+
+
+/// @brief setter for type
+/// @param new type of the ship
+void Ship::setType(std::string type) {
+   this->type = type;
+}
+
+
+/// @brief setter for xpos
+/// @param new starting position in x direction
+void Ship::setXpos(int xpos) {
+   this->xpos = xpos;
+}
+
+
+/// @brief setter for ypos
+/// @param new starting position in y direction
+void Ship::setYpos(int ypos) {
+   this->ypos = ypos;
+}
+
+
+/// @brief setter for orientation
+/// @param new orientation of the ship
+void Ship::setOrientation(char orientation) {
+   this->orientation = orientation;
 }
