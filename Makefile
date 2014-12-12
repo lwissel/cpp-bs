@@ -13,8 +13,8 @@ TESTDIR = tests
 
 all: main
 	
-main: main.o Grid.o
-	$(CC) main.o Grid.o -o $(EXECUTABLE)
+main: main.o Grid.o Ship.o
+	$(CC) main.o Grid.o Ship.o -o $(EXECUTABLE)
 
 main.o: main.cpp
 	$(CC) -I$(SRCDIR) $(CFLAGS) src/main.cpp
@@ -22,8 +22,11 @@ main.o: main.cpp
 Grid.o: Grid.cpp
 	$(CC) -I$(SRCDIR) $(CFLAGS) src/Grid.cpp
 
+Ship.o: Ship.cpp
+	$(CC) -I$(SRCDIR) $(CFLAGS) src/Ship.cpp
+
 unit_test:
-	$(CC) -I$(SRCDIR) -I$(TESTDIR) tests/mainTest.cpp tests/GridTest.cpp src/Grid.cpp -o $(EXECUTABLETEST)
+	$(CC) -I$(SRCDIR) -I$(TESTDIR) tests/mainTest.cpp tests/GridTest.cpp src/Grid.cpp tests/ShipTest.cpp src/Ship.cpp -o $(EXECUTABLETEST)
 
 clean:
 	rm -rf *.o $(EXECUTABLE)
