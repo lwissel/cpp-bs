@@ -143,12 +143,7 @@ here, but I will include my ideas for completeness:
 
 \section Implementation
 The code should be self-explanatory and well commented. I refer here to the
-class documentation in the later pages of this document or the HTML version to
-\section Reflection 
-This module and learning programming in particular without simple numerical
-excercises was new to me. At my home university we just used advanced
-application suits like Mathematica where the 'programming' is very intuitive. I
-get a simple overview.
+class documentation in the later pages of this document or the HTML version.
 
 
 \subsection dev Development Process

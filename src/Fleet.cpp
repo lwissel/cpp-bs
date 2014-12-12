@@ -66,7 +66,7 @@ void Fleet::addShip(Ship ship) {
 
 
 /// @brief calls the vector remove function and reduces the number of ships
-/// @bug not working at the moment
+/// not working at the moment
 /** 
 void Fleet::delShip(Ship ship) {
    for (std::vector<Ship>::const_iterator it = this->ships.begin(); it != this->ships.end(); ++it) {
