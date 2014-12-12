@@ -14,6 +14,7 @@
  */
 
 #include <string>
+#include <sstream>
 
 #include "Ship.hpp"
 
@@ -72,6 +73,18 @@ int Ship::getYpos() {
 /// @return character representing the orientation
 char Ship::getOrientation() {
    return this->orientation;
+}
+
+
+/// @brief return a string representation of the ship
+/// @return ship properties
+std::string Ship::printShip() {
+   std::ostringstream os;
+   os << "Type: " << this->type << ", Size: " << this->size;
+   os << ", Orientation: " << this->orientation;
+   os << ", (x,y) Position: " << "(" << this->xpos << "," << this->ypos << ")";
+
+   return os.str();
 }
 
 

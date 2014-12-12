@@ -63,6 +63,9 @@ class Ship {
 
       /// getter for orientation
       char getOrientation();
+      
+      /// print ship to string
+      std::string printShip();
 
       /// setter for size
       void setSize(int size);
