@@ -54,8 +54,16 @@ first becomes victorious.
 
 \section Features 
 The features of the latest version include
-- 
--
+- creating battlegrids, filling it with values and printing
+- creating ships and setting their position etc
+- using the ships to generate fleet objects that belong to a player
+- creating players that own everything above
+
+Mainly missing is a proper main routine and the control class which could not
+be finished in time. The game is therefore not functional but I don't expect
+major problem during the rest of the implementation, even though there are some
+delicate details in the control class like the correct encoding of the player's
+grids or the user input mapping. The cli menu may use external libraries.
 
 
 \section run Compilation and Execution
